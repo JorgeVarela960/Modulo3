@@ -1,0 +1,41 @@
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+        
+        Biblioteca biblioteca = new Biblioteca();
+
+        
+        biblioteca.agregarLibro(new Libro("El Quijote", "Miguel de Cervantes", 1605, "Novela"));
+        biblioteca.agregarLibro(new Libro("Cien Años de Soledad", "Gabriel García Márquez", 1967, "Novela"));
+        biblioteca.agregarLibro(new Libro("Hamlet", "William Shakespeare", 1600, "Tragedia"));
+
+        
+        System.out.println("Buscar por título 'Hamlet':");
+        List<Libro> encontradosPorTitulo = biblioteca.buscarPorTitulo("Hamlet");
+        for (Libro libro : encontradosPorTitulo) {
+            System.out.println(libro);
+        }
+
+        
+        System.out.println("\nBuscar por autor 'Gabriel García Márquez':");
+        List<Libro> encontradosPorAutor = biblioteca.buscarPorAutor("Gabriel García Márquez");
+        for (Libro libro : encontradosPorAutor) {
+            System.out.println(libro);
+        }
+
+        
+        System.out.println("\nPrestar el libro 'El Quijote': " + (biblioteca.prestarLibro("El Quijote") ? "Éxito" : "Falló"));
+
+        
+        System.out.println("\nLibros disponibles:");
+        biblioteca.mostrarLibrosDisponibles();
+
+        
+        System.out.println("\nDevolver el libro 'El Quijote': " + (biblioteca.devolverLibro("El Quijote") ? "Éxito" : "Falló"));
+
+        
+        System.out.println("\nLibros disponibles:");
+        biblioteca.mostrarLibrosDisponibles();
+    }
+}
